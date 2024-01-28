@@ -1,0 +1,70 @@
+<!DOCKTYPE html>
+<html>
+
+<head>
+	<title>Озеро</title>
+	<link href='../styles.css' rel='stylesheet'>
+</head>
+
+<body>
+	<div><header class='header'>
+		<div class = "title">Озёра</div>
+  		<ul class="menu">
+    			<li><a href="../main.htm">Главная</a></li>
+  		</ul>
+	</header></div>
+
+	<h1 align='center'>Тургояк</h1>
+	<p>Территория водосбора охватывает 476 км² и протянута с северного направления в южную сторону на 12,5 км, а также с восточной стороны на запад на 11,0 км. Средний уровень воды на протяжении десятилетий находится на отметке 319,45 м над уровнем моря. Западная сторона представлена гранитами, а восточная состоит из серпентинитов и граносиенитов (сиеногранитов). Общая площадь поверхности воды - 26,4 км². Средняя отметка глубины озера составляет 19,2 м, а максимальная — 34 м. Вода озера невероятно прозрачна.</p>
+	<img src='../images/Turgoyak.jpg' class='image' width='100%' height='500'>
+	<p>Тургояк привлекает путешественником не только красотой и прозрачностью воды. На берегах озера находятся душистые хвойные леса.</p>
+	<p>Всего здесь расположено от 10 до 12 небольших островков и полуостровков. Самыми крупными считаются Чайка и остров Веры. Особо интересен путешественникам остров Веры, на территории которого находятся различные памятники истории и архитектуры, в том числе дольмены и даже каменоломни. Площадь острова - 0,08 км². Это массив из крупных камней.</p>
+	<p>Над водной гладью Тургояка возвышается величественный хребет Заозёрный. С него открывается захватывающий вид на озеро и залив Мухоринскую курью.</p>
+	<p>Растительный и животный мир озера Тургояк очень разнообразен. Здесь обитают медведи, лоси, рыси, волки, барсуки, куницы, кабаны, косули, зайцы, белки и многие другие. По берегу растут лекарственные травы, а в сосновом бору можно найти грибы и ягоды. Водная растительность скудная. В Тургояке обитает множество рыб разных семейств, а также раки.</p>
+
+	<button vspace='10' id="editBtn" type="button">Изменить страницу</button>
+	<p> Температура: <span id='red281'> нет</span></p>
+	<p> Заметки: <span id='red282'> нет</span></p>
+	<p> Отзывы: <span id='red283'> нет</span></p>
+	
+	<script>
+
+		var editBtn = document.getElementById('editBtn');
+		var editables = document.querySelectorAll('#red281, #red282, #red283')
+	 
+		editBtn.addEventListener('click', function(e) {
+			if (!editables[0].isContentEditable) {
+			editables[0].contentEditable = 'true';
+			editables[1].contentEditable = 'true';
+			editables[2].contentEditable = 'true';
+			editBtn.innerHTML = 'Сохранить изменения';
+			editBtn.style.backgroundColor = '#6F9';
+ 		 } else {
+			editables[0].contentEditable = 'false';
+			editables[1].contentEditable = 'false';
+			editables[2].contentEditable = 'false';
+			editBtn.innerHTML = 'Включить редактирование';
+			editBtn.style.backgroundColor = '#c0c0c0';
+			for (var i = 0; i < editables.length; i++) {
+			localStorage.setItem(editables[i].getAttribute('id'), editables[i].innerHTML);}
+			}
+		});
+	</script>
+
+
+	<script>
+		if (typeof(Storage) !== "undefined") {
+ 
+  		if (localStorage.getItem('red281') !== null) {
+    	editables[0].innerHTML = localStorage.getItem('red281');}
+
+		if (localStorage.getItem('red282') !== null) {
+    	editables[1].innerHTML = localStorage.getItem('red282');}
+
+		if (localStorage.getItem('red283') !== null) {
+    	editables[2].innerHTML = localStorage.getItem('red283');} 
+	}
+	</script>
+</body>
+
+</html>

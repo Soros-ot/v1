@@ -1,0 +1,67 @@
+<!DOCKTYPE html>
+<html>
+
+<head>
+	<title>Озеро</title>
+	<link href='../styles.css' rel='stylesheet'>
+</head>
+
+<body>
+	<div><header class='header'>
+		<div class = "title">Озёра</div>
+  		<ul class="menu">
+    			<li><a href="../main.htm">Главная</a></li>
+  		</ul>
+	</header></div>
+
+	<h1 align='center'>Шаблиш</h1>
+	<p>Озеро Шабалиш находится в Челябинской области в Каслинском районе, а точнее, практически на самой границе района со Свердловской областью. Шабалиш — достаточно большое озеро, имеющее вытянутую овальную форму. Его длина достигает 8,5 км, а ширина — около 5 км. Средняя глубина на озере не более 2 м, а максимальная может достигать и 5 м. Глубины озера не имеют больших перепадов и нарастают постепенно. Прозрачность воды в теплое время года может достигать 3 м. Вся вода в озере пресная. Общая площадь, занимаемая водами озера составляет 32 км². Дно озера укрыто преимущественно камнем и песком. Высота озера над уровнем моря составляет 183 м.</p>
+	<img src='../images/Shablish.jpg' class='image' width='100%' height='500'>
+	<p>В северо-восточной части из озера вытекает река под названием Исток, там же находится село с таким же названием. В восточной части озера есть большие заросли камыша. Именно здесь можно встретить наибольшее количество рыбаков. В основном они рыбачат с лодок. На озере разрешено перемещение на моторных лодках, однако возможно частое наматывание травы на винт мотора, поскольку подводные растения поднимаются до самой поверхности воды. Основная масса рыбаков приезжает сюда, чтобы поохотиться на хищную рыбу, типа щуки. Хотя, вполне можно поймать ерша, окуня, карпа и, недавно запущенного сюда, судака. Несмотря на то, что рыбалка здесь платная, потому что озеро находится в ведении Каслинского рыбного завода, никаких условий для рыбаков не создано. Ночевать им приходится в палатках, а дрова привозить с собой.</p>
+
+	<button vspace='10' id="editBtn" type="button">Изменить страницу</button>
+	<p> Температура: <span id='red91'> нет</span></p>
+	<p> Заметки: <span id='red92'> нет</span></p>
+	<p> Отзывы: <span id='red93'> нет</span></p>
+	
+	<script>
+
+		var editBtn = document.getElementById('editBtn');
+		var editables = document.querySelectorAll('#red91, #red92, #red93')
+	 
+		editBtn.addEventListener('click', function(e) {
+			if (!editables[0].isContentEditable) {
+			editables[0].contentEditable = 'true';
+			editables[1].contentEditable = 'true';
+			editables[2].contentEditable = 'true';
+			editBtn.innerHTML = 'Save Changes';
+			editBtn.style.backgroundColor = '#6F9';
+ 		 } else {
+			editables[0].contentEditable = 'false';
+			editables[1].contentEditable = 'false';
+			editables[2].contentEditable = 'false';
+			editBtn.innerHTML = 'Включить редактирование';
+			editBtn.style.backgroundColor = '#c0c0c0';
+			for (var i = 0; i < editables.length; i++) {
+			localStorage.setItem(editables[i].getAttribute('id'), editables[i].innerHTML);}
+			}
+		});
+	</script>
+
+
+	<script>
+		if (typeof(Storage) !== "undefined") {
+ 
+  		if (localStorage.getItem('red91') !== null) {
+    	editables[0].innerHTML = localStorage.getItem('red91');}
+
+		if (localStorage.getItem('red92') !== null) {
+    	editables[1].innerHTML = localStorage.getItem('red92');}
+
+		if (localStorage.getItem('red93') !== null) {
+    	editables[2].innerHTML = localStorage.getItem('red93');} 
+	}
+	</script>
+</body>
+
+</html>

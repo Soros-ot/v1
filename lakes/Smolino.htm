@@ -1,0 +1,70 @@
+<!DOCKTYPE html>
+<html>
+
+<head>
+	<title>Озеро</title>
+	<link href='../styles.css' rel='stylesheet'>
+</head>
+
+<body>
+	<div><header class='header'>
+		<div class = "title">Озёра</div>
+  		<ul class="menu">
+    			<li><a href="../main.htm">Главная</a></li>
+  		</ul>
+	</header></div>
+
+	<h1 align='center'>Смолино</h1>
+	<p>Данный водоем располагается на окраине Челябинска в Ленинском районе и является памятником природы. Он образовался на месте стародавнего моря, о чем свидетельствует вода по типу и химическому составу напоминающая морскую. В ней содержится много солей и она имеет щелочную реакцию. Озеро Смолино имеет площадь зеркала 27 км2. Его средняя глубина 3,8 м, максимальная – 6,7 м. берега здесь невысокие и пологие.</p>
+	<img src='../images/Smolino.jpg' class='image' width='100%' height='500'>
+	<p>Грязь, собирающаяся на прочном дне озера до недавнего времени использовали в лечебных целях. Но, в результате того, что в озера периодически сбрасываются сточные воды, ил с его дна уже опасно использовать в медицинских целях. Сегодня ученые находят в воде озера Смолино значительные примеси органических веществ, тяжелых металлов, нефтепродуктов.</p>
+	<p>За счет питания, в основном это дождевое и за счет подземных ключей, снижается минерализация воды в водоеме. Однако сегодня она относится к хлоридно-натриевому типу.</p>
+	<p>За советское время озеро пытались зарыбливать. Туда были выпущены мальки рипуса, карпа, сырока. Однако рыба не выжила. Сегодня здесь обитают окунь, чебак, карась, гальян. Из растительного мира присутствуют сине-зеленые и протококковые водоросли. Фитопланктон не развивается. Это связано с неблагоприятным газовым режимом, который приводит к мору рыбы.</p>
+	<p>Вдоль берегов озера располагаются жилые массивы и садовые участки. Прохладная вода летом сюба привлекает много отдыхающих.</p>
+
+	<button vspace='10' id="editBtn" type="button">Изменить страницу</button>
+	<p> Температура: <span id='red251'> нет</span></p>
+	<p> Заметки: <span id='red252'> нет</span></p>
+	<p> Отзывы: <span id='red253'> нет</span></p>
+	
+	<script>
+
+		var editBtn = document.getElementById('editBtn');
+		var editables = document.querySelectorAll('#red251, #red252, #red253')
+	 
+		editBtn.addEventListener('click', function(e) {
+			if (!editables[0].isContentEditable) {
+			editables[0].contentEditable = 'true';
+			editables[1].contentEditable = 'true';
+			editables[2].contentEditable = 'true';
+			editBtn.innerHTML = 'Сохранить изменения';
+			editBtn.style.backgroundColor = '#6F9';
+ 		 } else {
+			editables[0].contentEditable = 'false';
+			editables[1].contentEditable = 'false';
+			editables[2].contentEditable = 'false';
+			editBtn.innerHTML = 'Включить редактирование';
+			editBtn.style.backgroundColor = '#c0c0c0';
+			for (var i = 0; i < editables.length; i++) {
+			localStorage.setItem(editables[i].getAttribute('id'), editables[i].innerHTML);}
+			}
+		});
+	</script>
+
+
+	<script>
+		if (typeof(Storage) !== "undefined") {
+ 
+  		if (localStorage.getItem('red251') !== null) {
+    	editables[0].innerHTML = localStorage.getItem('red251');}
+
+		if (localStorage.getItem('red252') !== null) {
+    	editables[1].innerHTML = localStorage.getItem('red252');}
+
+		if (localStorage.getItem('red253') !== null) {
+    	editables[2].innerHTML = localStorage.getItem('red253');} 
+	}
+	</script>
+</body>
+
+</html>

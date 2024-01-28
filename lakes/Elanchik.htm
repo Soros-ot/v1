@@ -1,0 +1,70 @@
+<!DOCKTYPE html>
+<html>
+
+<head>
+	<title>Озеро</title>
+	<link href='../styles.css' rel='stylesheet'>
+</head>
+
+<body>
+	<div><header class='header'>
+		<div class = "title">Озёра</div>
+  		<ul class="menu">
+    			<li><a href="../main.htm">Главная</a></li>
+  		</ul>
+	</header></div>
+
+	<h1 align='center'>Еланчик</h1>
+	<p>Пресноводное озеро Еланчик, расположенное в Челябинской области в 10 км от города Чебаркуль, является гидрологическим природным памятником. Оно входит в комплекс из нескольких связанных протоками озер, с запада огражденных Ильменским хребтом, а с юга – Чашковскими горами. Еланчик состоит в пятерке самых чистых уральских озер. Прозрачная вода позволяет просматривать дно на глубине 1,4 м.</p>
+	<img src='../images/Elanchik.jpg' class='image' width='100%' height='500'>
+	<p>Еланчик имеет площадь более 6 км², среднюю глубину 4 м и неровное, илистое дно. Благодаря крупному мысу Копешки, который делит озеро почти на две части, форма Еланчика напоминает подкову. На озере есть два небольших островка: Кораблик и остров Любви. Берега в основном крутые и обрывистые. Есть заболоченные плесы, заросшие тростником, осокой и рогозом, являющиеся местом обитания водоплавающей дичи. В месте впадения реки Грязнухи низкие берега с папоротниками переходят в смешанный лес с обилием ягод и грибов. Водосборную площадь озера занимают хвойные боры и лиственные рощи, в некоторых местах спускающиеся к самой воде.</p>
+	<p>В XIX веке на дне и восточном берегу Еланчика были найдены месторождения слюды и графита. До сих пор у озера сохранились глубокие карьеры, называемые Карандашными ямами. Из них добывали графит для карандашей и выплавки булатной стали.</p>
+	<p>Озеро является популярным местом для зимней и летней рыбалки. В нем водятся ерши, лини, караси, плотва, щуки, окуни, сиги. Существует официально зарегистрированный рыбацкий рекорд: 2-метровая щука весом почти 40 кг. Илистое дно обеспечивает подводным обитателям комфортную зимовку. Доказательством кристальной чистоты воды озера является то, что в нем водятся раки.</p>
+	<p>В 1985 году озеру Еланчик присвоили статус природного памятника областного значения. Это было сделано, чтобы сохранить редкие растения и животные в естественной среде обитания.</p>
+
+	<button vspace='10' id="editBtn" type="button">Изменить страницу</button>
+	<p> Температура: <span id='red101'> нет</span></p>
+	<p> Заметки: <span id='red102'> нет</span></p>
+	<p> Отзывы: <span id='red103'> нет</span></p>
+	
+	<script>
+
+		var editBtn = document.getElementById('editBtn');
+		var editables = document.querySelectorAll('#red101, #red102, #red103')
+	 
+		editBtn.addEventListener('click', function(e) {
+			if (!editables[0].isContentEditable) {
+			editables[0].contentEditable = 'true';
+			editables[1].contentEditable = 'true';
+			editables[2].contentEditable = 'true';
+			editBtn.innerHTML = 'Сохранить изменения';
+			editBtn.style.backgroundColor = '#6F9';
+ 		 } else {
+			editables[0].contentEditable = 'false';
+			editables[1].contentEditable = 'false';
+			editables[2].contentEditable = 'false';
+			editBtn.innerHTML = 'Включить редактирование';
+			editBtn.style.backgroundColor = '#c0c0c0';
+			for (var i = 0; i < editables.length; i++) {
+			localStorage.setItem(editables[i].getAttribute('id'), editables[i].innerHTML);}
+			}
+		});
+	</script>
+
+
+	<script>
+		if (typeof(Storage) !== "undefined") {
+ 
+  		if (localStorage.getItem('red101') !== null) {
+    	editables[0].innerHTML = localStorage.getItem('red101');}
+
+		if (localStorage.getItem('red102') !== null) {
+    	editables[1].innerHTML = localStorage.getItem('red102');}
+
+		if (localStorage.getItem('red103') !== null) {
+    	editables[2].innerHTML = localStorage.getItem('red103');} 
+	}
+	</script>
+</body>
+
+</html>

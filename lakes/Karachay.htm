@@ -1,0 +1,67 @@
+<!DOCKTYPE html>
+<html>
+
+<head>
+	<title>Озеро</title>
+	<link href='../styles.css' rel='stylesheet'>
+</head>
+
+<body>
+	<div><header class='header'>
+		<div class = "title">Озёра</div>
+  		<ul class="menu">
+    			<li><a href="../main.htm">Главная</a></li>
+  		</ul>
+	</header></div>
+
+	<h1 align='center'>Карачай</h1>
+	<p>Озеро Карачай расположенное в Челябинской области является частью Теченского водного каскада. Это замкнутая система, состоящая из озер, плотин, прудов и обводных каналов, которые используются для утилизации радиоактивных жидких отходов ПО «Маяк». В этот каскад также вошли озеро Кызил-Таш, Иртяш, Старое болото и много прудов.</p>
+	<img src='../images/Karachay.jpg' class='image' width='100%' height='500'>
+	<p>В настоящее время озеро Карачай очень мелководное и сильно заболоченное. В результате длительного использования этого водоема в качестве хранилища радиоактивных отходов (а используют его с 1951 года), в нем скопилось более 120 миллионов кюри радиоактивных материалов. Говорят, что в этом озере хранится «два Чернобыля». Сначала сюда сбрасывали высокоактивные сточные воды, позже начали слив среднеактивных. После неожиданного обмеления озера в 1967 году, ветром по окрестностям разнесло радиоактивный песок. Зона заражения охватила 2700 километров квадратных. Чтобы предотвратить последующие инциденты подобного плана, было принято решение о засыпании мелководной части озера и поднятии берегов по всему периметру, за уровнем воды был установлен жесткий контроль. Позже была запланирована полная засыпка водоема, но эти планы все еще остаются планами. К тому же даже эти меры не спасут область от опасности. Ведь даже если превратить эту местность в зеленую лужайку, нельзя остановить заражение подземных грунтовых вод. Поэтому проблему озера Карачай решить очень непросто.</p>
+
+	<button vspace='10' id="editBtn" type="button">Изменить страницу</button>
+	<p> Температура: <span id='red121'> нет</span></p>
+	<p> Заметки: <span id='red122'> нет</span></p>
+	<p> Отзывы: <span id='red123'> нет</span></p>
+	
+	<script>
+
+		var editBtn = document.getElementById('editBtn');
+		var editables = document.querySelectorAll('#red121, #red122, #red123')
+	 
+		editBtn.addEventListener('click', function(e) {
+			if (!editables[0].isContentEditable) {
+			editables[0].contentEditable = 'true';
+			editables[1].contentEditable = 'true';
+			editables[2].contentEditable = 'true';
+			editBtn.innerHTML = 'Сохранить изменения';
+			editBtn.style.backgroundColor = '#6F9';
+ 		 } else {
+			editables[0].contentEditable = 'false';
+			editables[1].contentEditable = 'false';
+			editables[2].contentEditable = 'false';
+			editBtn.innerHTML = 'Включить редактирование';
+			editBtn.style.backgroundColor = '#c0c0c0';
+			for (var i = 0; i < editables.length; i++) {
+			localStorage.setItem(editables[i].getAttribute('id'), editables[i].innerHTML);}
+			}
+		});
+	</script>
+
+
+	<script>
+		if (typeof(Storage) !== "undefined") {
+ 
+  		if (localStorage.getItem('red121') !== null) {
+    	editables[0].innerHTML = localStorage.getItem('red121');}
+
+		if (localStorage.getItem('red122') !== null) {
+    	editables[1].innerHTML = localStorage.getItem('red122');}
+
+		if (localStorage.getItem('red123') !== null) {
+    	editables[2].innerHTML = localStorage.getItem('red123');} 
+	}
+	</script>
+</body>
+
+</html>

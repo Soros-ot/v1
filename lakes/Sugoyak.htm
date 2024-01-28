@@ -1,0 +1,70 @@
+<!DOCKTYPE html>
+<html>
+
+<head>
+	<title>Озеро</title>
+	<link href='../styles.css' rel='stylesheet'>
+</head>
+
+<body>
+	<div><header class='header'>
+		<div class = "title">Озёра</div>
+  		<ul class="menu">
+    			<li><a href="../main.htm">Главная</a></li>
+  		</ul>
+	</header></div>
+
+	<h1 align='center'>Сугояк</h1>
+
+	<p>В Красноармейском районе Челябинской области находится озеро Сугояк. Чтобы добраться до озера нужно проехать около 50 км по шоссе Челябинск-Курган в северо-восточном направлении до поселка Лазурный. Сам водоем имеет чашеобразную форму, его длина составляет почти 4 тыс. м., а ширина — где-то 2 тыс. м. Общая площадь, которую покрывают воды Сугояка составляет 13,5 км². Озеро не может похвастаться большими глубинами, в среднем они не превышают 4 м, хотя есть места, где их величина достигает 7-8 м. Вода в озере достаточно чистая, в разных местах ее прозрачность находится в пределах от 1 до 1,5 м. Объем водных ресурсов Сугояка составляет 53,6 млн. м³. Дно водоема укрыто песком вперемешку с илом.</p>
+	<img src='../images/Sugoyak.jpg' class='image' width='100%' height='500'>
+	<p>По берегам озера в юго-западной части имеется кварцевый песок, который можно использовать для производства стекла. Вода Сугояка содержит соли и микроэлементы, которые способствуют улучшению общего состояния человеческого организма. Химический состав местной воды ученые относят к гидрокарбонатно-натриевому составу. Удельный вес ионов в 1 л воды Сугояка составляет 1,6 гр. Это стало возможно из-за того, что озеро расположено на третичных осадках, которые очень богаты засоленной глиной.</p>
+	<p>На дне озера есть многочисленные источники подземных родников, поэтому количество воды в Сугояке практически всегда постоянно. Здесь регулярно производится подкормка и разведение новых видов рыбы, поэтому рыбалка на озере очень популярна не только среди местных жителей, но и приезжих. Прежде всего рыбаки едут сюда, чтобы поймать золотого и серебряного карася, представители этого вида в Сугояке могут достигать 1,5 кг. Помимо этого, в озеро запускается малек рипуса, карпа и сига, хотя изредка можно поймать и окуня, и щуку, и ротана.</p>
+	<p>Берега озера Сугояк очень густо заселены, здесь находятся населенные пункты и базы отдыха. Практически с трех сторон озера находится дорога, что является дополнительным привлекающим фактором для туристов и рыбаков.</p>
+
+	<button vspace='10' id="editBtn" type="button">Изменить страницу</button>
+	<p> Температура: <span id='red31'> нет</span></p>
+	<p> Заметки: <span id='red32'> нет</span></p>
+	<p> отзывы: <span id='red33'> нет</span></p>
+	
+	<script>
+
+		var editBtn = document.getElementById('editBtn');
+		var editables = document.querySelectorAll('#red31, #red32, #red33')
+	 
+		editBtn.addEventListener('click', function(e) {
+			if (!editables[0].isContentEditable) {
+			editables[0].contentEditable = 'true';
+			editables[1].contentEditable = 'true';
+			editables[2].contentEditable = 'true';
+			editBtn.innerHTML = 'Сохранить изменения';
+			editBtn.style.backgroundColor = '#6F9';
+ 		 } else {
+			editables[0].contentEditable = 'false';
+			editables[1].contentEditable = 'false';
+			editables[2].contentEditable = 'false';
+			editBtn.innerHTML = 'Включить редактирование';
+			editBtn.style.backgroundColor = '#c0c0c0';
+			for (var i = 0; i < editables.length; i++) {
+			localStorage.setItem(editables[i].getAttribute('id'), editables[i].innerHTML);}
+			}
+		});
+	</script>
+
+
+	<script>
+		if (typeof(Storage) !== "undefined") {
+ 
+  		if (localStorage.getItem('red31') !== null) {
+    	editables[0].innerHTML = localStorage.getItem('red31');}
+
+		if (localStorage.getItem('red32') !== null) {
+    	editables[1].innerHTML = localStorage.getItem('red32');}
+
+		if (localStorage.getItem('red33') !== null) {
+    	editables[2].innerHTML = localStorage.getItem('red33');} 
+	}
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,69 @@
+<!DOCKTYPE html>
+<html>
+
+<head>
+	<title>Озеро</title>
+	<link href='../styles.css' rel='stylesheet'>
+</head>
+
+<body>
+	<div><header class='header'>
+		<div class = "title">Озёра</div>
+  		<ul class="menu">
+    			<li><a href="../main.htm">Главная</a></li>
+  		</ul>
+	</header></div>
+
+	<h1 align='center'>Сладкое</h1>
+	<p>Озеро Сладкое представляет собой водоем, расположенный в непосредственной близости от населенного пункта под названием Кочердык, что находится в Октябрьском районе Челябинской области. Официально этот водный объект является частью Кочердыкского заказника. Долгое время озеро Сладкое считалось гидрологическим памятником природы областного значения.</p>
+	<img src='../images/Sladkoe.jpg' class='image' width='100%' height='500'>
+	<p>Минеральный состав включает в себя хлор и ионы натрия, бор и гидрокарбонаты, а также целый ряд других солей и даже соединения салициловой кислоты. Воды озера достаточно мягкие и щелочные. Для нее характерна повышенная минерализация. Если вы попробуете воду из этого водоема, то сначала почувствуете сладость, а затем появится солоновато-щелочной привкус.</p>
+	<p>Озеро Сладкое не является местом обитания животных организмов. Еще одна отличительная особенность – отсутствие водорослей. В месте, где берег встречается с водой присутствуют камыши, где вы не найдете ни одного птичьего гнезда. Из-за того, что в воде присутствуют определенные вещества, все побережье окрашено в белый цвет.</p>
+	<p>Историки до сих пор не определились с основной версией происхождения названия. Но все чаще встречается следующий вариант. У местных жителей существует легенда, что когда-то к этому озеру вышел отряд пугачевцев. Именно в тот момент они убегали из-под Троицкой крепости, где потерпели поражение. Естественно, долгий путь, отсутствие времени на отдых сделали свое дело: пугачевцы стали жадно пить воду из озера. С утра многие из них заметили, что раны, полученные в бою, затянулись. Таким образом, они и решили назвать озеро Сладким.</p>
+
+	<button vspace='10' id="editBtn" type="button">Изменить страницу</button>
+	<p> Температура: <span id='red271'> нет</span></p>
+	<p> Заметки: <span id='red272'> нет</span></p>
+	<p> Отзывы: <span id='red273'> нет</span></p>
+	
+	<script>
+
+		var editBtn = document.getElementById('editBtn');
+		var editables = document.querySelectorAll('#red271, #red272, #red273')
+	 
+		editBtn.addEventListener('click', function(e) {
+			if (!editables[0].isContentEditable) {
+			editables[0].contentEditable = 'true';
+			editables[1].contentEditable = 'true';
+			editables[2].contentEditable = 'true';
+			editBtn.innerHTML = 'Сохранить изменения';
+			editBtn.style.backgroundColor = '#6F9';
+ 		 } else {
+			editables[0].contentEditable = 'false';
+			editables[1].contentEditable = 'false';
+			editables[2].contentEditable = 'false';
+			editBtn.innerHTML = 'Включить редактирование';
+			editBtn.style.backgroundColor = '#c0c0c0';
+			for (var i = 0; i < editables.length; i++) {
+			localStorage.setItem(editables[i].getAttribute('id'), editables[i].innerHTML);}
+			}
+		});
+	</script>
+
+
+	<script>
+		if (typeof(Storage) !== "undefined") {
+ 
+  		if (localStorage.getItem('red271') !== null) {
+    	editables[0].innerHTML = localStorage.getItem('red271');}
+
+		if (localStorage.getItem('red272') !== null) {
+    	editables[1].innerHTML = localStorage.getItem('red272');}
+
+		if (localStorage.getItem('red273') !== null) {
+    	editables[2].innerHTML = localStorage.getItem('red273');} 
+	}
+	</script>
+</body>
+
+</html>

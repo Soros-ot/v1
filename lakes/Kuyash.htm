@@ -1,0 +1,71 @@
+<!DOCKTYPE html>
+<html>
+
+<head>
+	<title>Озеро</title>
+	<link href='../styles.css' rel='stylesheet'>
+</head>
+
+<body>
+	<div><header class='header'>
+		<div class = "title">Озёра</div>
+  		<ul class="menu">
+    			<li><a href="../main.htm">Главная</a></li>
+  		</ul>
+	</header></div>
+
+	<h1 align='center'>Куяш</h1>
+	<p>Куяш – озеро в Каслинском районе Челябинской области. Расположено к западу от федеральной трассы М36, на расстоянии 140 км от Челябинска. На берегах водоема расположено три поселения: Малый и Большой Куяш и село Голубинка. В его окрестностях находится множество других озер: Теренкуль, Кырмыскалы, Кирпичники. Недалеко от озера разрабатывается месторождение глины.</p>
+	<img src='../images/Kuyash.jpg' class='image' width='100%' height='500'>
+	<p>Это небольшой водоем округлой формы, с общим водосбором в 1,4 га и площадью 12,5 кв. км. Питание озера – дождевое и паводковое. С востока в озеро впадает небольшой, часто пересыхающий ручей, берущий начало в болотах. Озеро – бессточное, из него не вытекает ни одной реки.</p>
+	<p>Предполагают, что название озера произошло от башкирского слова «солнце».</p>
+	<p>Вода в озере Куяш чистая, прозрачная на глубину до 2-х метров. Дно — песчаное, максимальные глубины до 6 метров отмечаются в центре озера. В районе поселений находится много диких песчаных пляжей.</p>
+	<p>Берега водоема в основном пологие, во многих местах заросшие тростником и осокой. Озеро окружено пастбищами, лугами и лиственными рощами. В окрестных лесах изобилие лекарственных трав и ягод. Многие приезжают в эту местность за грибами. Весной и осенью на озере наблюдают перелетных водоплавающих птиц – гусей и уток.</p>
+	<p>Местные жители едут на озеро Куяш, чтобы не только отдохнуть на лоне природы, но и порыбачить. Здесь хорошо клюет карп и карась. Ежегодно озеро зарыбляется, в рыбацких уловах встречается лещ, окунь, сырок, рипус и даже судак. На мелководье обитают раки.</p>
+
+	<button vspace='10' id="editBtn" type="button">Изменить страницу</button>
+	<p> Температура: <span id='red81'> нет</span></p>
+	<p> Заметки: <span id='red82'> нет</span></p>
+	<p> Отзывы: <span id='red83'> нет</span></p>
+	
+	<script>
+
+		var editBtn = document.getElementById('editBtn');
+		var editables = document.querySelectorAll('#red81, #red82, #red83')
+	 
+		editBtn.addEventListener('click', function(e) {
+			if (!editables[0].isContentEditable) {
+			editables[0].contentEditable = 'true';
+			editables[1].contentEditable = 'true';
+			editables[2].contentEditable = 'true';
+			editBtn.innerHTML = 'Save Changes';
+			editBtn.style.backgroundColor = '#6F9';
+ 		 } else {
+			editables[0].contentEditable = 'false';
+			editables[1].contentEditable = 'false';
+			editables[2].contentEditable = 'false';
+			editBtn.innerHTML = 'Включить редактирование';
+			editBtn.style.backgroundColor = '#c0c0c0';
+			for (var i = 0; i < editables.length; i++) {
+			localStorage.setItem(editables[i].getAttribute('id'), editables[i].innerHTML);}
+			}
+		});
+	</script>
+
+
+	<script>
+		if (typeof(Storage) !== "undefined") {
+ 
+  		if (localStorage.getItem('red81') !== null) {
+    	editables[0].innerHTML = localStorage.getItem('red81');}
+
+		if (localStorage.getItem('red82') !== null) {
+    	editables[1].innerHTML = localStorage.getItem('red82');}
+
+		if (localStorage.getItem('red83') !== null) {
+    	editables[2].innerHTML = localStorage.getItem('red83');} 
+	}
+	</script>
+</body>
+
+</html>

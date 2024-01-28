@@ -1,0 +1,70 @@
+<!DOCKTYPE html>
+<html>
+
+<head>
+	<title>Озеро</title>
+	<link href='../styles.css' rel='stylesheet'>
+</head>
+
+<body>
+	<div><header class='header'>
+		<div class = "title">Озёра</div>
+  		<ul class="menu">
+    			<li><a href="../main.htm">Главная</a></li>
+  		</ul>
+	</header></div>
+	
+	<h1 align='center'>Чебаркуль</h1>
+	<p>Чебаркуль – озеро на восточном склоне Южного Урала в Чебаркульском районе Челябинской области России. Находится недалеко от одноименного города. Название озера в переводе с тюркского языка означает «красивое, пёстрое». Крупнейший город рядом – Челябинск. Расстояние до него – 90 км, добраться от Челябинска до озера можно на автомобиле или по железной дороге.</p>
+	<img src='../images/Chebarkul.jpg' class='image' width='100%' height='500'>
+	<p>Общая площадь озера – 19,8 км ². Водоем имеет тектоническое происхождение, начинается на высоте 320 м над уровнем моря. Протяженность Чебаркуля – 6 000 м. Питание озера смешанное, но в основном снеговое. Ледостав длится с начала ноября и до конца апреля.</p>
+	<p>Озеро Чебаркуль богато рыбой. Здесь водятся налим, судак, щука, окунь, карп, линь, лещ, плотва, ротан, ерш, карась, язь. Озеро зарыбляют сигом и рипусом. Рыба мечет икру в заливах озера. Разнообразие рыбы в озере обусловлено наличием рыбозавода. Благодаря обилию рыбы в водоеме здесь много рыбаков. Рыбачат чаще на северном и южном берегах.</p>
+	<p>Чебаркуль – источник реки Коелга (она вытекает с юго-восточной его стороны). В озеро впадают Еловка, Кундуруша и Кудряшевка. В самом озере и на его берегах есть действующие родники.</p>
+	<p>На озере – большое количество островов и несколько полуостровов. Острова густо покрыты лесом. Берега реки живописны, благодаря этому здесь развит туризм, гостей принимают санатории и базы отдыха, построенные по всей окружности водоема. Леса по берегам Чебаркуля богаты ягодами и грибами. Южный берег Чебаркуля заболочен.</p>
+
+	<button vspace='10' id="editBtn" type="button">Включить редактирование</button>
+	<p> Температура: <span id='red1'> нет</span></p>
+	<p> Заметки: <span id='red2'> нет</span></p>
+	<p> Отзывы: <span id='red3'> нет</span></p>
+	
+	<script>
+
+		var editBtn = document.getElementById('editBtn');
+		var editables = document.querySelectorAll('#red1, #red2, #red3')
+	 
+		editBtn.addEventListener('click', function(e) {
+			if (!editables[0].isContentEditable) {
+			editables[0].contentEditable = 'true';
+			editables[1].contentEditable = 'true';
+			editables[2].contentEditable = 'true';
+			editBtn.innerHTML = 'Сохранить изменения';
+			editBtn.style.backgroundColor = '#6F9';
+ 		 } else {
+			editables[0].contentEditable = 'false';
+			editables[1].contentEditable = 'false';
+			editables[2].contentEditable = 'false';
+			editBtn.innerHTML = 'Включить редактирование';
+			editBtn.style.backgroundColor = '#c0c0c0';
+			for (var i = 0; i < editables.length; i++) {
+			localStorage.setItem(editables[i].getAttribute('id'), editables[i].innerHTML);}
+			}
+		});
+	</script>
+
+
+	<script>
+		if (typeof(Storage) !== "undefined") {
+ 
+  		if (localStorage.getItem('red1') !== null) {
+    	editables[0].innerHTML = localStorage.getItem('red1');}
+
+		if (localStorage.getItem('red2') !== null) {
+    	editables[1].innerHTML = localStorage.getItem('red2');}
+
+		if (localStorage.getItem('red3') !== null) {
+    	editables[2].innerHTML = localStorage.getItem('red3');} 
+	}
+	</script>
+</body>
+
+</html>

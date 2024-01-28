@@ -1,0 +1,68 @@
+<!DOCKTYPE html>
+<html>
+
+<head>
+	<title>Озеро</title>
+	<link href='../styles.css' rel='stylesheet'>
+</head>
+
+<body>
+	<div><header class='header'>
+		<div class = "title">Озёра</div>
+  		<ul class="menu">
+    			<li><a href="../main.htm">Главная</a></li>
+  		</ul>
+	</header></div>
+
+	<h1 align='center'>Юлаш</h1>
+	<p>Пресноводное озеро Юлаш (Юлачи) расположено в Каслинском районе Челябинской области. Оно находится в 150 км от Челябинска и в 100 км от Екатеринбурга. На западном берегу водоема разместился поселок Подкорытово. Общая площадь: 6,16 км².</p>
+	<img src='../images/Yulash.jpg' class='image' width='100%' height='500'>
+	<p>Флора и фауна. По дороге до озера встречаются густые леса, чередующиеся с небольшими степными и луговыми участками. Берега водоема поросли камышом. Озеро питается за счет атмосферных осадков. Озеро Юлаш популярно среди рыбаков. Здесь водится карась (до 1,5 кг), а также окунь, щука и ротан. Удобнее всего рыбачить с лодки. Кроме того, озеро Юлаш – это неплохое место для дикого отдыха.</p>
+	<p>Название водоема произошло от древних мужских имен Юлдаш и Юлшы, что значит «попутчик» или «спутник». Озеро Юлаш имеет уникальную особенность: оно меняет свои очертания в зависимости от уровня грунтовых вод. Так, около полвека назад этот водоем представлял собой мокрую низину с неплохими сенокосными угодьями. Со временем низина покрылась водой. Сейчас озеро подошло к своим древним берегам, затопив окружающие его рощи. В тоже время Юлаш относится к озерам тектонического происхождения, образовавшимся в результате движения земной коры.</p>
+
+	<button vspace='10' id="editBtn" type="button">Изменить страницу</button>
+	<p> Температура: <span id='red211'> нет</span></p>
+	<p> Заметки: <span id='red212'> нет</span></p>
+	<p> Отзывы: <span id='red213'> нет</span></p>
+	
+	<script>
+
+		var editBtn = document.getElementById('editBtn');
+		var editables = document.querySelectorAll('#red211, #red212, #red213')
+	 
+		editBtn.addEventListener('click', function(e) {
+			if (!editables[0].isContentEditable) {
+			editables[0].contentEditable = 'true';
+			editables[1].contentEditable = 'true';
+			editables[2].contentEditable = 'true';
+			editBtn.innerHTML = 'Сохранить изменения';
+			editBtn.style.backgroundColor = '#6F9';
+ 		 } else {
+			editables[0].contentEditable = 'false';
+			editables[1].contentEditable = 'false';
+			editables[2].contentEditable = 'false';
+			editBtn.innerHTML = 'Включить редактирование';
+			editBtn.style.backgroundColor = '#c0c0c0';
+			for (var i = 0; i < editables.length; i++) {
+			localStorage.setItem(editables[i].getAttribute('id'), editables[i].innerHTML);}
+			}
+		});
+	</script>
+
+
+	<script>
+		if (typeof(Storage) !== "undefined") {
+ 
+  		if (localStorage.getItem('red211') !== null) {
+    	editables[0].innerHTML = localStorage.getItem('red211');}
+
+		if (localStorage.getItem('red212') !== null) {
+    	editables[1].innerHTML = localStorage.getItem('red212');}
+
+		if (localStorage.getItem('red213') !== null) {
+    	editables[2].innerHTML = localStorage.getItem('red213');} 
+	}
+	</script>
+</body>
+
+</html>

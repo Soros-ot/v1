@@ -1,0 +1,68 @@
+<!DOCKTYPE html>
+<html>
+
+<head>
+	<title>Озеро</title>
+	<link href='../styles.css' rel='stylesheet'>
+</head>
+
+<body>
+	<div><header class='header'>
+		<div class = "title">Озёра</div>
+  		<ul class="menu">
+    			<li><a href="../main.htm">Главная</a></li>
+  		</ul>
+	</header></div>
+
+	<h1 align='center'>Сунукуль</h1>
+	<p>Озеро Сунукуль представляет собой водоем, расположенный в Челябинской области, а точнее в Чебаркульском районе, всего на несколько километров севернее, чем лежит город, ставший известным благодаря метеориту – Чебаркуль. Это озеро разделено на две части, которые объединяются благодаря специальной протоке. Северную зону принято называть Большим плесом, тогда как южная – это Малое плесо. Отметим, что в северной области озера Сунукуль присутствует несколько крупных островов, а именно два. Их называют Высоким и Плоским.</p>
+	<img src='../images/Sunukul.jpg' class='image' width='100%' height='500'>
+	<p>Существует официальное объяснение происхождения такого названия. На самом деле много лет назад в этих краях было очень популярно имя Суну. В переводе с башкирского языка оно обозначает «последний». Речь идет о появлении ребенка в семье. В непосредственной близости от этого водоема вы можете увидеть некоторое количество небольших по размерам озер, которые называют Мисяш и Малый Сунукуль, Большой и Малый Кисегач. Всего в нескольких метрах от берега озера находятся такие населенные пункты, как Сунукуль и Непряхино. Отметим наличие Ильменского заповедника в качестве соседа. В настоящий момент озеро Сунукуль является частью Непряхинского сельского поселения.</p>
+	<p>В водах этого озера водится немалое количество рыб. Речь идет о таких популярных представителях, как карп и лещ, карась и щука, плотва и окунь, ерш и линь. Всего семь лет назад здесь решили разводить налима и рипуса.</p>
+
+	<button vspace='10' id="editBtn" type="button">Изменить страницу</button>
+	<p> Температура: <span id='red201'> нет</span></p>
+	<p> Заметки: <span id='red202'> На протяжении двенадцати последних лет на побережье водоема постоянно проводили Бажовский фестиваль народного творчества.</span></p>
+	<p> Отзывы: <span id='red203'> нет</span></p>
+	
+	<script>
+
+		var editBtn = document.getElementById('editBtn');
+		var editables = document.querySelectorAll('#red201, #red202, #red203')
+	 
+		editBtn.addEventListener('click', function(e) {
+			if (!editables[0].isContentEditable) {
+			editables[0].contentEditable = 'true';
+			editables[1].contentEditable = 'true';
+			editables[2].contentEditable = 'true';
+			editBtn.innerHTML = Сохранить изменения';
+			editBtn.style.backgroundColor = '#6F9';
+ 		 } else {
+			editables[0].contentEditable = 'false';
+			editables[1].contentEditable = 'false';
+			editables[2].contentEditable = 'false';
+			editBtn.innerHTML = 'Включить редактирование';
+			editBtn.style.backgroundColor = '#c0c0c0';
+			for (var i = 0; i < editables.length; i++) {
+			localStorage.setItem(editables[i].getAttribute('id'), editables[i].innerHTML);}
+			}
+		});
+	</script>
+
+
+	<script>
+		if (typeof(Storage) !== "undefined") {
+ 
+  		if (localStorage.getItem('red201') !== null) {
+    	editables[0].innerHTML = localStorage.getItem('red201');}
+
+		if (localStorage.getItem('red202') !== null) {
+    	editables[1].innerHTML = localStorage.getItem('red202');}
+
+		if (localStorage.getItem('red203') !== null) {
+    	editables[2].innerHTML = localStorage.getItem('red203');} 
+	}
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,69 @@
+<!DOCKTYPE html>
+<html>
+
+<head>
+	<title>Озеро</title>
+	<link href='../styles.css' rel='stylesheet'>
+</head>
+
+<body>
+	<div><header class='header'>
+		<div class = "title">Озёра</div>
+  		<ul class="menu">
+    			<li><a href="../main.htm">Главная</a></li>
+  		</ul>
+	</header></div>
+
+	<h1 align='center'>Первое</h1>
+	<p>Озеро Первое находится с восточной стороны от Челябинска. Сегодня средняя площадь озера составляет 18,7 км², максимальная его глубина – 10,5. Береговая линия относительно ровная, только северо-западный и западные берега отличаются высотой.</p>
+	<img src='../images/Pervoe.jpg' class='image' width='100%' height='500'>
+	<p>До 1930-х годов Озеро Первое не отличалось большими размерами. Вода в нем была соленой. Оно к средине лета пересыхало до самого дна, но в 30-х годах XX столетия туда начали сбрасывать сточные воды местные предприятия. В связи с производственной необходимостью котловина озера была увеличена. Часть воды из водоема до 1958 года сбрасывалась по каналу в речку Миасс. Это не давало водоему выйти из берегов. Сегодня каналом пользуются в очень редких случаях.</p>
+	<p>Это не давало водоему выйти из берегов. Сегодня каналом пользуются в очень редких случаях. Сегодня озером пользуются, как доразбавителем недостаточно очищенной воды следующие предприятия: ООО «ЧТЗ-Уралтрак», ТЭЦ-2, ТЭЦ-3, ОАО ЧЗПСН «Профнастил», завод шлифовальных изделий. Некоторые предприятия забирают жидкость из озера Первое для технологического процесса.</p>
+	<p>Согласно аналитическим исследованиям воды в озера Первое, массовая доля стоков здесь равняется 86%. Водоем перенасыщен нефтепродуктами, фенолом, ионами хлора, катионами меди и цинка, нитратом аммония. Благодаря наличию загрязнений, озеро в летний период покрывается зеленой пленкой, что свидетельствует об обилии фитопланктона. Другой растительности здесь не наблюдаются. Люди используют озеро для купания. Им особенно нравятся песчаные пляжи здешних мест. Рыбаки хвастаются богатыми уловами. Здесь встречается плотва, ерш, окунь, карась.</p>
+
+	<button vspace='10' id="editBtn" type="button">Изменить страницу</button>
+	<p> Температура: <span id='red111'> нет</span></p>
+	<p> Заметки: <span id='red112'> нет</span></p>
+	<p> Отзывы: <span id='red113'> нет</span></p>
+	
+	<script>
+
+		var editBtn = document.getElementById('editBtn');
+		var editables = document.querySelectorAll('#red111, #red112, #red113')
+	 
+		editBtn.addEventListener('click', function(e) {
+			if (!editables[0].isContentEditable) {
+			editables[0].contentEditable = 'true';
+			editables[1].contentEditable = 'true';
+			editables[2].contentEditable = 'true';
+			editBtn.innerHTML = 'Сохранить изменения';
+			editBtn.style.backgroundColor = '#6F9';
+ 		 } else {
+			editables[0].contentEditable = 'false';
+			editables[1].contentEditable = 'false';
+			editables[2].contentEditable = 'false';
+			editBtn.innerHTML = 'Включить редактирование';
+			editBtn.style.backgroundColor = '#c0c0c0';
+			for (var i = 0; i < editables.length; i++) {
+			localStorage.setItem(editables[i].getAttribute('id'), editables[i].innerHTML);}
+			}
+		});
+	</script>
+
+
+	<script>
+		if (typeof(Storage) !== "undefined") {
+ 
+  		if (localStorage.getItem('red111') !== null) {
+    	editables[0].innerHTML = localStorage.getItem('red111');}
+
+		if (localStorage.getItem('red112') !== null) {
+    	editables[1].innerHTML = localStorage.getItem('red112');}
+
+		if (localStorage.getItem('red113') !== null) {
+    	editables[2].innerHTML = localStorage.getItem('red113');} 
+	}
+	</script>
+</body>
+
+</html>

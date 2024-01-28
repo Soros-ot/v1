@@ -1,0 +1,67 @@
+<!DOCKTYPE html>
+<html>
+
+<head>
+	<title>Озеро</title>
+	<link href='../styles.css' rel='stylesheet'>
+</head>
+
+<body>
+	<div><header class='header'>
+		<div class = "title">Озёра</div>
+  		<ul class="menu">
+    			<li><a href="../main.htm">Главная</a></li>
+  		</ul>
+	</header></div>
+
+	<h1 align='center'>Увильды</h1>
+	<p>Озеро Увильды — самое большое ( 68,1 кв. км) по площади, слабо минерализованное озеро Челябинской области причудливой формы, напоминающей грушу с заливами и тихими заводями. Находится оно у подножия Уральских гор. Большая часть берегов покрыта сосновым и смешанным лесом. Вода озера отличается большой чистотой и прозрачностью: можно увидеть дно на глубине около восьми метров. Максимальные длина — 14 км, ширина — 9 км.</p>
+	<img src='../images/Uvildy.jpg' class='image' width='100%' height='500'>
+	<p>Озеро глубокое: его средняя глубина около 14 метров, максимальная — 35. На его дне найдены сапропелевые грязи, а около озера находятся радоновые источники. В Увильды впадает река Черемшанка. Когда-то озеро было бессточным, но в 1975 году, для улучшения водоснабжения Челябинска была прорыта Увильдинская канава — канал к Аргазинскому водохранилищу. Богато рыбой. Имеет несколько островов.</p>
+
+	<button vspace='10' id="editBtn" type="button">Изменить страницу</button>
+	<p> Температура: <span id='red291'> нет</span></p>
+	<p> Заметки: <span id='red292'> нет</span></p>
+	<p> Отзывы: <span id='red293'> нет</span></p>
+	
+	<script>
+
+		var editBtn = document.getElementById('editBtn');
+		var editables = document.querySelectorAll('#red291, #red292, #red293')
+	 
+		editBtn.addEventListener('click', function(e) {
+			if (!editables[0].isContentEditable) {
+			editables[0].contentEditable = 'true';
+			editables[1].contentEditable = 'true';
+			editables[2].contentEditable = 'true';
+			editBtn.innerHTML = 'Сохранить изменения';
+			editBtn.style.backgroundColor = '#6F9';
+ 		 } else {
+			editables[0].contentEditable = 'false';
+			editables[1].contentEditable = 'false';
+			editables[2].contentEditable = 'false';
+			editBtn.innerHTML = 'Включить редактирование';
+			editBtn.style.backgroundColor = '#c0c0c0';
+			for (var i = 0; i < editables.length; i++) {
+			localStorage.setItem(editables[i].getAttribute('id'), editables[i].innerHTML);}
+			}
+		});
+	</script>
+
+
+	<script>
+		if (typeof(Storage) !== "undefined") {
+ 
+  		if (localStorage.getItem('red291') !== null) {
+    	editables[0].innerHTML = localStorage.getItem('red291');}
+
+		if (localStorage.getItem('red292') !== null) {
+    	editables[1].innerHTML = localStorage.getItem('red292');}
+
+		if (localStorage.getItem('red293') !== null) {
+    	editables[2].innerHTML = localStorage.getItem('red293');} 
+	}
+	</script>
+</body>
+
+</html>

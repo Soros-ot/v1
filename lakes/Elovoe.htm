@@ -1,0 +1,70 @@
+<!DOCKTYPE html>
+<html>
+
+<head>
+	<title>Озеро</title>
+	<link href='../styles.css' rel='stylesheet'>
+</head>
+
+<body>
+	<div><header class='header'>
+		<div class = "title">Озёра</div>
+  		<ul class="menu">
+    			<li><a href="../main.htm">Главная</a></li>
+  		</ul>
+	</header></div>
+
+	<h1 align='center'>Еловое</h1>
+	<p>Пресноводное Еловое озеро находится в трех километрах от города Чебаркуль Челябинской области. Площадь водоема около 3,2 км.2, длина составляет 2,2 км., ширина 1,9 км. Средняя глубина 8 м. (максимально зафиксированная 13,2 м.).</p>
+	<img src='../images/Elovoe.jpg' class='image' width='100%' height='500'>
+	<p>Крутые берега, изрезанные и каменистые подъемы, песчаные пляжи, чистейшая прозрачная вода — водоем бесподобно красив и не очень обжит людьми. С 1969 года Еловое озеро объявлено гидрологическим памятником природы. На озере есть два маленьких острова и один крупный (около 15 гектаров).</p>
+	<p>Водоем является раем для рыбаков, ведь здесь водятся окуни, караси, лини, лещи, чебаки, язи, щуки и налимы. Здесь даже водится редкий лососевый рипус. Прозрачная вода открывает прекрасные виды на заросли водорослей.</p>
+	<p>На берегах гнездиться много водоплавающей птицы (уток, гусей), на берегу и на островах водятся глухари, тетерева и белые куропатки. Вокруг озера можно увидеть косулю или кабана, зайца или лисицу, и даже красавца-лося. В редких случаях можно встретить барсука или норку. На берегах много норок ондатры.</p>
+	<p>Это озеро единственное с «русским» названием и его происхождение не понятно до сих пор, ведь елей на берегах почти нет. Береговая линия покрыта березовым, сосновым и липовым лесом. В подлеске растет боярышник, ива, малина и другие кустарники.</p>
+
+	<button vspace='10' id="editBtn" type="button">Изменить страницу</button>
+	<p> Температура: <span id='red221'> нет</span></p>
+	<p> Заметки: <span id='red222'> нет</span></p>
+	<p> Отзывы: <span id='red223'> нет</span></p>
+	
+	<script>
+
+		var editBtn = document.getElementById('editBtn');
+		var editables = document.querySelectorAll('#red221, #red222, #red223')
+	 
+		editBtn.addEventListener('click', function(e) {
+			if (!editables[0].isContentEditable) {
+			editables[0].contentEditable = 'true';
+			editables[1].contentEditable = 'true';
+			editables[2].contentEditable = 'true';
+			editBtn.innerHTML = 'Сохранить изменения';
+			editBtn.style.backgroundColor = '#6F9';
+ 		 } else {
+			editables[0].contentEditable = 'false';
+			editables[1].contentEditable = 'false';
+			editables[2].contentEditable = 'false';
+			editBtn.innerHTML = 'Включить редактирование';
+			editBtn.style.backgroundColor = '#c0c0c0';
+			for (var i = 0; i < editables.length; i++) {
+			localStorage.setItem(editables[i].getAttribute('id'), editables[i].innerHTML);}
+			}
+		});
+	</script>
+
+
+	<script>
+		if (typeof(Storage) !== "undefined") {
+ 
+  		if (localStorage.getItem('red221') !== null) {
+    	editables[0].innerHTML = localStorage.getItem('red221');}
+
+		if (localStorage.getItem('red222') !== null) {
+    	editables[1].innerHTML = localStorage.getItem('red222');}
+
+		if (localStorage.getItem('red223') !== null) {
+    	editables[2].innerHTML = localStorage.getItem('red223');} 
+	}
+	</script>
+</body>
+
+</html>

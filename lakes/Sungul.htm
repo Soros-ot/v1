@@ -1,0 +1,70 @@
+<!DOCKTYPE html>
+<html>
+
+<head>
+	<title>Озеро</title>
+	<link href='../styles.css' rel='stylesheet'>
+</head>
+
+<body>
+	<div><header class='header'>
+		<div class = "title">Озёра</div>
+  		<ul class="menu">
+    			<li><a href="../main.htm">Главная</a></li>
+  		</ul>
+	</header></div>
+
+	<h1 align='center'>Сунгуль</h1>
+	<p>Сунгуль – озеро в Челябинской области, в Каслинском районе. Расположено юго-восточнее города Вишневогорска, у подножия Вишневых гор. Площадь его составляет 11, 6 кв.км, глубина достигает 8 метров. С близлежащими озерами соединяется протоками. Дно его илистое, берега скалистые и обрывистые. На озере расположено несколько островов.</p>
+	<img src='../images/Sungul.jpg' class='image' width='100%' height='500'>
+	<p>Сунгуль славится своей лечебной, минерально–щелочной водой и является одним из самых чистых озер Урала. В западной части озера находятся многочисленные санатории и дачные участки. Здесь же расположен рыбный питомник, в котором разводят карпа. Озеро Сунгуль богато рыбой. Рыбачить можно круглый год, в уловах встречаются щука, судак, налим. Хорошо ловится плотва, окунь, карась, лещ, ерш, линь, елец. Озеро регулярно зарыбляется карпом и сигом.</p>
+	<p>Вода в Сунгуле очень чистая, видимость достигает 6 метров. Летом водная поверхность покрывается сине- зелеными водорослями. Береговая линия сильно изрезана, встречаются выходы скальных пород. Сосновые леса на берегах озера сменяются живописными холмами и каменными грядами.</p>
+	<p>В окружающих озеро лесах растут лекарственные травы, много ягод (смородина, малина, земляника, калина). Отдыхающие собирают грибы: подосиновики, лисички, опята, грузди.</p>
+	<p>Множество птиц наполняет лес свои щебетом, распространены синицы, славки, дятлы, кукушки, сороки. На берегах озера находятся гнездовья водоплавающей птицы. Из представителей животного мира в окрестных лесах встречаются зайцы, лисы, барсуки, в глухих местах – волки.</p>
+
+	<button vspace='10' id="editBtn" type="button">Изменть страницу</button>
+	<p> Температура: <span id='red11'> нет</span></p>
+	<p> Заметки: <span id='red12'> нет</span></p>
+	<p> Отзывы: <span id='red13'> нет</span></p>
+	
+	<script>
+
+		var editBtn = document.getElementById('editBtn');
+		var editables = document.querySelectorAll('#red11, #red12, #red13')
+	 
+		editBtn.addEventListener('click', function(e) {
+			if (!editables[0].isContentEditable) {
+			editables[0].contentEditable = 'true';
+			editables[1].contentEditable = 'true';
+			editables[2].contentEditable = 'true';
+			editBtn.innerHTML = 'Сохранить изменения';
+			editBtn.style.backgroundColor = '#6F9';
+ 		 } else {
+			editables[0].contentEditable = 'false';
+			editables[1].contentEditable = 'false';
+			editables[2].contentEditable = 'false';
+			editBtn.innerHTML = 'Включить редактирование';
+			editBtn.style.backgroundColor = '#c0c0c0';
+			for (var i = 0; i < editables.length; i++) {
+			localStorage.setItem(editables[i].getAttribute('id'), editables[i].innerHTML);}
+			}
+		});
+	</script>
+
+
+	<script>
+		if (typeof(Storage) !== "undefined") {
+ 
+  		if (localStorage.getItem('red11') !== null) {
+    	editables[0].innerHTML = localStorage.getItem('red11');}
+
+		if (localStorage.getItem('red12') !== null) {
+    	editables[1].innerHTML = localStorage.getItem('red12');}
+
+		if (localStorage.getItem('red13') !== null) {
+    	editables[2].innerHTML = localStorage.getItem('red13');} 
+	}
+	</script>
+</body>
+
+</html>

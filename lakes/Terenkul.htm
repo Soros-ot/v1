@@ -1,0 +1,69 @@
+<!DOCKTYPE html>
+<html>
+
+<head>
+	<title>Озеро</title>
+	<link href='../styles.css' rel='stylesheet'>
+</head>
+
+<body>
+	<div><header class='header'>
+		<div class = "title">Озёра</div>
+  		<ul class="menu">
+    			<li><a href="../main.htm">Главная</a></li>
+  		</ul>
+	</header></div>
+	<h1 align='center'>Теренкуль</h1>
+	<p>Озеро Теренкуль находится в Челябинской области, в Чебаркульском районе, в 70 км от Челябинска. Водоем, окруженный живописными горными хребтами Уральских гор, раскинулся на площади 2,3 кв. км. Глубина Теренкуля небольшая, лишь в редких местах она достигает 5 метров. Озеро вытянулось в восточном направлении, с западной стороны граничит с Ильменским заповедником.</p>
+	<img src='../images/Terenkul.jpg' class='image' width='100%' height='500'>
+	<p>На песчаном дне Теренкуля бьют горные ключи. Берега в основном обрывистые, в низменных местах заросшие травой, и густой подводной растительностью. В лесах широко распространены сосна, береза, липа, дуб. Из кустарников – шиповник, калина, боярышник, смородина, малина. Много ягодных полян, на которых отдыхающие собирают чернику, голубику, морошку.</p>
+	<p>К озеру вплотную подступают хвойные и смешанные леса, деревья растут непосредственно на берегу, нависая над водой. На западной и северной стороне водоема расположены многочисленные санатории, базы отдыха и детские лагеря.</p>
+	<p>Встречается боровая дичь: глухарь, тетерев, куропатка. Из млекопитающих распространены зайцы, белки, кроты, хорьки, иногда встречаются лисы и волки. На берегах озера акклиматизирован бобр. Обитают редкие виды птиц: орлан-белохвост, орел- могильник, беркут, сапсан, скопа. На озере находятся гнездовья лебедя- кликуна, журавля, вальдшнепа, гагары.</p>
+	<p>На Теренкуле хороша рыбалка. Здесь ловят плотву, окуня, сига, щуку, карася. В садках подращивают карпа, в 2012 году в воды озера запустили байкальского омуля.</p>
+
+	<button vspace='10' id="editBtn" type="button">Изменить информацию</button>
+	<p> Температура: <span id='red131'> нет</span></p>
+	<p> Заметки: <span id='red132'> нет</span></p>
+	<p> Отзывы: <span id='red133'> нет</span></p>
+	
+	<script>
+
+		var editBtn = document.getElementById('editBtn');
+		var editables = document.querySelectorAll('#red131, #red132, #red133')
+	 
+		editBtn.addEventListener('click', function(e) {
+			if (!editables[0].isContentEditable) {
+			editables[0].contentEditable = 'true';
+			editables[1].contentEditable = 'true';
+			editables[2].contentEditable = 'true';
+			editBtn.innerHTML = 'Сохранить изменения';
+			editBtn.style.backgroundColor = '#6F9';
+ 		 } else {
+			editables[0].contentEditable = 'false';
+			editables[1].contentEditable = 'false';
+			editables[2].contentEditable = 'false';
+			editBtn.innerHTML = 'Включить редактирование';
+			editBtn.style.backgroundColor = '#c0c0c0';
+			for (var i = 0; i < editables.length; i++) {
+			localStorage.setItem(editables[i].getAttribute('id'), editables[i].innerHTML);}
+			}
+		});
+	</script>
+
+
+	<script>
+		if (typeof(Storage) !== "undefined") {
+ 
+  		if (localStorage.getItem('red131') !== null) {
+    	editables[0].innerHTML = localStorage.getItem('red131');}
+
+		if (localStorage.getItem('red132') !== null) {
+    	editables[1].innerHTML = localStorage.getItem('red132');}
+
+		if (localStorage.getItem('red133') !== null) {
+    	editables[2].innerHTML = localStorage.getItem('red133');} 
+	}
+	</script>
+</body>
+
+</html>

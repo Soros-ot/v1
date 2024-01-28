@@ -1,0 +1,69 @@
+<!DOCKTYPE html>
+<html>
+
+<head>
+	<title>Озеро</title>
+	<link href='../styles.css' rel='stylesheet'>
+</head>
+
+<body>
+	<div><header class='header'>
+		<div class = "title">Озёра</div>
+  		<ul class="menu">
+    			<li><a href="../main.htm">Главная</a></li>
+  		</ul>
+	</header></div>
+
+	<h1 align='center'>Калды</h1>
+	<p>Озеро Калды расположено в Кунашакском районе в 70 – 80 километрах от Челябинска на территории лесостепной зоны Уральского региона. Озеро округлой формы с площадью водного зеркала около 4,5 км. Максимальная глубина озера составляет 7 метров, в то время как средняя глубина 4-5 метров.</p>
+	<img src='../images/Kaldy.jpg' class='image' width='100%' height='500'>
+	<p>Практически со всех сторон озеро окружено жилыми поселками. На юго-западном берегу расположена база отдыха. Озеро Калды является одним из немногих наземных водоемов, в котором сохранилась относительно чистая вода, несмотря на интенсивную антропогенную нагрузку. Видимость составляет около 2 метров, что является отличным показателем чистоты, дно берега песчаное, лишь небольшие участки занимают заросли тростника.</p>
+	<p>Благодаря отличному состоянию водной экосистемы в озере сохранилось большое количество редких видов рыб и ракообразных, что привлекает множество рыбаков. В озере обитает различная промысловая рыба, такая как карась, щука, окунь, чебак, лещ, линь, сырок. Периодически в озеро запускают новые виды рыб, но не всегда этот процесс проходит удачно.</p>
+	<p>Растительность окрестностей озера небогатая. Лесной участок состоит из мелколиственных пород деревьев (береза) и голосеменных, таких как ель, сосна, пихта. Травянистый покров практически не развит, можно встретить только небольшие участки со злаковыми куртинами. В самом озере растет только камыш на небольших площадях.</p>
+
+	<button vspace='10' id="editBtn" type="button">Изменить страницу</button>
+	<p> Температура: <span id='red191'> нет</span></p>
+	<p> Заметки: <span id='red192'> нет</span></p>
+	<p> Отзывы: <span id='red193'> нет</span></p>
+	
+	<script>
+
+		var editBtn = document.getElementById('editBtn');
+		var editables = document.querySelectorAll('#red191, #red192, #red193')
+	 
+		editBtn.addEventListener('click', function(e) {
+			if (!editables[0].isContentEditable) {
+			editables[0].contentEditable = 'true';
+			editables[1].contentEditable = 'true';
+			editables[2].contentEditable = 'true';
+			editBtn.innerHTML = 'Сохранить изменения';
+			editBtn.style.backgroundColor = '#6F9';
+ 		 } else {
+			editables[0].contentEditable = 'false';
+			editables[1].contentEditable = 'false';
+			editables[2].contentEditable = 'false';
+			editBtn.innerHTML = 'Включить редактирование';
+			editBtn.style.backgroundColor = '#c0c0c0';
+			for (var i = 0; i < editables.length; i++) {
+			localStorage.setItem(editables[i].getAttribute('id'), editables[i].innerHTML);}
+			}
+		});
+	</script>
+
+
+	<script>
+		if (typeof(Storage) !== "undefined") {
+ 
+  		if (localStorage.getItem('red191') !== null) {
+    	editables[0].innerHTML = localStorage.getItem('red191');}
+
+		if (localStorage.getItem('red192') !== null) {
+    	editables[1].innerHTML = localStorage.getItem('red192');}
+
+		if (localStorage.getItem('red193') !== null) {
+    	editables[2].innerHTML = localStorage.getItem('red193');} 
+	}
+	</script>
+</body>
+
+</html>

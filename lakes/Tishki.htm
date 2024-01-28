@@ -1,0 +1,69 @@
+<!DOCKTYPE html>
+<html>
+
+<head>
+	<title>Озеро</title>
+	<link href='../styles.css' rel='stylesheet'>
+</head>
+
+<body>
+	<div><header class='header'>
+		<div class = "title">Озёра</div>
+  		<ul class="menu">
+    			<li><a href="../main.htm">Главная</a></li>
+  		</ul>
+	</header></div>
+
+	<h1 align='center'>Тишки</h1>
+	<p>Озеро Тишки находится в Кунашакском районе Челябинской области. Этот довольно крупный водоем (его площадь – 2550 га), находится в 25 км от Челябинска. Однако дальнее расстояние не пугает истинных любителей рыбалки. На берега этого водоема ежегодно съезжаются люди, чтобы насладиться поклевкой карпа, пеляди и сырка. Ведь на озере есть идеальные условия для рыбы.</p>
+	<img src='../images/Tishki.jpg' class='image' width='100%' height='500'>
+	<p>Тишки имеет вытянутую форму (его длина составляет 8 км, а ширина – 3, 5 км). При средней глубине 6 м, озеро просматривается только на первых 3 м. Остальная его часть – это ил. Кроме этого площадь озера на 20% поросла камышами. Это идеальные условия для развода, а главное для зимовки рыбы. Однако те же заросли камыша затрудняют проход к воде. Проезд здесь особенно затруднен в дождливую погоду. Основное питание озера составляет дождевая вода, частично – грунтовые воды.</p>
+	<p>Пользователь водоема: МУП рыбозавод «Балык». Именно его сотрудники ежегодно сюда запускают до 2 млн малька обыкновенного, японского, немецкого и зеркального карпов. В 2009 году в озеро Тишки было выпущено 2,6 млн. мальков белого амура. Рыболовы могут похвастаться здесь уловом в 5-6 кг. Некоторые обитатели водоема достигают в весе до 7 кг.</p>
+	<p>Кроме прекрасной рыбалки озеро на западной своей части имеет удобные песчаные пляжи. Они вместе с смешанными лиственными лесами, где можно встретить осины и березы, являются отличной зоной отдыха, чем и пользуются как жители области, так и близлежащих селений.</p>
+
+	<button vspace='10' id="editBtn" type="button">Изменить страницу</button>
+	<p> Температура: <span id='red171'> нет</span></p>
+	<p> Заметки: <span id='red172'> нет</span></p>
+	<p> Отзывы: <span id='red173'> нет</span></p>
+	
+	<script>
+
+		var editBtn = document.getElementById('editBtn');
+		var editables = document.querySelectorAll('#red171, #red172, #red173')
+	 
+		editBtn.addEventListener('click', function(e) {
+			if (!editables[0].isContentEditable) {
+			editables[0].contentEditable = 'true';
+			editables[1].contentEditable = 'true';
+			editables[2].contentEditable = 'true';
+			editBtn.innerHTML = 'Сохранить изменения';
+			editBtn.style.backgroundColor = '#6F9';
+ 		 } else {
+			editables[0].contentEditable = 'false';
+			editables[1].contentEditable = 'false';
+			editables[2].contentEditable = 'false';
+			editBtn.innerHTML = 'Включить редактирование';
+			editBtn.style.backgroundColor = '#c0c0c0';
+			for (var i = 0; i < editables.length; i++) {
+			localStorage.setItem(editables[i].getAttribute('id'), editables[i].innerHTML);}
+			}
+		});
+	</script>
+
+
+	<script>
+		if (typeof(Storage) !== "undefined") {
+ 
+  		if (localStorage.getItem('red171') !== null) {
+    	editables[0].innerHTML = localStorage.getItem('red171');}
+
+		if (localStorage.getItem('red172') !== null) {
+    	editables[1].innerHTML = localStorage.getItem('red172');}
+
+		if (localStorage.getItem('red173') !== null) {
+    	editables[2].innerHTML = localStorage.getItem('red173');} 
+	}
+	</script>
+</body>
+
+</html>

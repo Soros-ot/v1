@@ -1,0 +1,73 @@
+<!DOCKTYPE html>
+<html>
+
+<head>
+	<title>Озеро</title>
+	<link href='../styles.css' rel='stylesheet'>
+</head>
+
+<body>
+	<div><header class='header'>
+		<div class = "title">Озёра</div>
+  		<ul class="menu">
+    			<li><a href="../main.htm">Главная</a></li>
+  		</ul>
+	</header></div>
+
+	<h1 align='center'>Айдыкуль</h1>
+	<p>Айдыкуль – озеро в Челябинской области, в Кунашакском районе, в 100 км от Челябинска. Озеро вытянуто с севера на юг на площади 26,5 кв. км. Вместе с прилегающими болотами занимает пространство в 35 кв.км. Сливается с озерами Актюбинское и Мамынкуль. Название озера переводят как «пестрое, полосатое».</p>
+	<img src='../images/Aydikul.jpg' class='image' width='100%' height='500'>
+	<p>Озеро не отличается живописными видами, расположено оно в равнинной местности, окружено полями, рядом лежит деревня Халитово. Берега заболоченные и пологие, окруженные зарослями камыша и тростника. Часть плесов покрыта водяным мхом, ряской, осокой.</p>
+	<p>Дно Айдыкуля песчаное, встречаются илистые места. Глубина его в основном – 2-3 метра, местами — до 5 метров. Вода в озере соленая, щелочная. На западной стороне водоема расположена база отдыха.</p>
+	<p>В тростниковых зарослях Айдыкуля гнездится множество водоплавающей птицы. Здесь можно встретить серого гуся и утку, гоголя, крякву, шилохвость и чирка.</p>
+	<p>Охотники добывают гагару, куликов, чибисов, бекасов. Много здесь речных чаек, иногда встречается журавль, цапля.</p>
+	<p>В зарослях тальника по берегам Айдыкуля обитают куропатки, в прилегающих перелесках водится заяц, лисица, в водах озера обитает ондатра.</p>
+	<p>Хороша на озере и рыбалка. Сюда в основном приезжают за карпами. Кроме них хорошо клюет карась, окунь.
+В рыбацких уловах встречается щука, пелядь, сиг, муксун, сырок. Рыбачат здесь в основном с лодки, хотя есть несколько неплохих мест для донной рыбалки.</p>
+
+	<button vspace='10' id="editBtn" type="button">Включить редактирование</button>
+	<p> Редактура 1: <span id='red41'> нет</span></p>
+	<p> Редактура 2: <span id='red42'> нет</span></p>
+	<p> Релактура 3: <span id='red43'> нет</span></p>
+	
+	<script>
+
+		var editBtn = document.getElementById('editBtn');
+		var editables = document.querySelectorAll('#red41, #red42, #red43')
+	 
+		editBtn.addEventListener('click', function(e) {
+			if (!editables[0].isContentEditable) {
+			editables[0].contentEditable = 'true';
+			editables[1].contentEditable = 'true';
+			editables[2].contentEditable = 'true';
+			editBtn.innerHTML = 'Сохранить изменения';
+			editBtn.style.backgroundColor = '#6F9';
+ 		 } else {
+			editables[0].contentEditable = 'false';
+			editables[1].contentEditable = 'false';
+			editables[2].contentEditable = 'false';
+			editBtn.innerHTML = 'Включить редактирование';
+			editBtn.style.backgroundColor = '#c0c0c0';
+			for (var i = 0; i < editables.length; i++) {
+			localStorage.setItem(editables[i].getAttribute('id'), editables[i].innerHTML);}
+			}
+		});
+	</script>
+
+
+	<script>
+		if (typeof(Storage) !== "undefined") {
+ 
+  		if (localStorage.getItem('red41') !== null) {
+    	editables[0].innerHTML = localStorage.getItem('red41');}
+
+		if (localStorage.getItem('red42') !== null) {
+    	editables[1].innerHTML = localStorage.getItem('red42');}
+
+		if (localStorage.getItem('red43') !== null) {
+    	editables[2].innerHTML = localStorage.getItem('red43');} 
+	}
+	</script>
+</body>
+
+</html>

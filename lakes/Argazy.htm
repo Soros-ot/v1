@@ -1,0 +1,70 @@
+<!DOCKTYPE html>
+<html>
+
+<head>
+	<title>Озеро</title>
+	<link href='../styles.css' rel='stylesheet'>
+</head>
+
+<body>
+	<div><header class='header'>
+		<div class = "title">Озёра</div>
+  		<ul class="menu">
+    			<li><a href="../main.htm">Главная</a></li>
+  		</ul>
+	</header></div>
+
+	<h1 align='center'>Аргази</h1>
+	<p>Рукотворное озеро Аргази раскинулось вблизи села Новоандреевка. Его побережье простирается вдоль малых селений Чишма, Туракаево и Байрамгулово, что находятся на западе Аргаяшского района. С юго-востока берега Аргази примыкают к Ильменскому заповеднику. Водоем входит в бассейн Аргазинского водохранилища, заполненного водами озер Тургояк и Увильды. Озеро признано крупнейшим искусственным водоемом Челябинской области, главным источником, несущим питьевую воду.</p>
+	<img src='../images/Argazy.jpg' class='image' width='100%' height='500'>
+	<p>Уровень воды в Аргази постоянно колеблется и временами достигает 6 метров, что способствует формированию непостоянной береговой линии с неопределенными очертаниями побережий, особенно на востоке. Из-за переменного уровня воды в зимний период на поверхности озера возникают трещины, разломы и образуются промоины.</p>
+	<p>Его весьма извилистые береговые кромки изрезаны множественными заливами с большими и малыми заболоченными участками, водная растительность которых прекрасно развита. Дно песчаное, илистое и каменистое. Здесь скальные выходы чередуются с илистыми участками и затопленными островами, выходящими наружу вслед за сбросом воды. Озерное зеркало испещрено чередой островков, больших и малых, скалистых и лесистых. Остров Липовый, заросший раскидистыми липами, считается природным ботаническим памятником.</p>
+	<p>Побережье Аргази находится в окружении живописных холмов. С запада его обрамляют потрясающие отроги Ильменских гор. Берега озера пологие и холмистые, лесистые и подернутые разнотравьем. Горные и холмистые склоны поросли сосновыми, осиновыми и березовыми лесами. Густые лиственные и хвойные лесные массивы подступают практически к самой водной глади.</p>
+	<p>Побережье обладает превосходной туристической инфраструктурой. Множественные санатории предлагают лечение, расслабление в русской бане, отдых за игрой в бильярд и прекрасную рыбалку. Щука и окунь, ерш и судак, язь и плотва – постоянные обитатели озера. Изредка рыбаки вылавливают ручьевую и радужную форель, карпа или осетра. Аргази активно зарыбляют сигом, рипусом и налимом. Летнюю рыбалку организуют на лодках, зимнюю – на снегоходах и вездеходах.</p>
+
+	<button vspace='10' id="editBtn" type="button">Изменить страницу</button>
+	<p> Температура: <span id='red141'> нет</span></p>
+	<p> Заметки: <span id='red142'> нет</span></p>
+	<p> Отзывы: <span id='red143'> нет</span></p>
+	
+	<script>
+
+		var editBtn = document.getElementById('editBtn');
+		var editables = document.querySelectorAll('#red141, #red142, #red143')
+	 
+		editBtn.addEventListener('click', function(e) {
+			if (!editables[0].isContentEditable) {
+			editables[0].contentEditable = 'true';
+			editables[1].contentEditable = 'true';
+			editables[2].contentEditable = 'true';
+			editBtn.innerHTML = 'Save Changes';
+			editBtn.style.backgroundColor = '#6F9';
+ 		 } else {
+			editables[0].contentEditable = 'false';
+			editables[1].contentEditable = 'false';
+			editables[2].contentEditable = 'false';
+			editBtn.innerHTML = 'Включить редактирование';
+			editBtn.style.backgroundColor = '#c0c0c0';
+			for (var i = 0; i < editables.length; i++) {
+			localStorage.setItem(editables[i].getAttribute('id'), editables[i].innerHTML);}
+			}
+		});
+	</script>
+
+
+	<script>
+		if (typeof(Storage) !== "undefined") {
+ 
+  		if (localStorage.getItem('red141') !== null) {
+    	editables[0].innerHTML = localStorage.getItem('red141');}
+
+		if (localStorage.getItem('red142') !== null) {
+    	editables[1].innerHTML = localStorage.getItem('red142');}
+
+		if (localStorage.getItem('red143') !== null) {
+    	editables[2].innerHTML = localStorage.getItem('red143');} 
+	}
+	</script>
+</body>
+
+</html>

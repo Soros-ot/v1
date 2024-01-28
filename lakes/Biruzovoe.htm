@@ -1,0 +1,70 @@
+<!DOCKTYPE html>
+<html>
+
+<head>
+	<title>Озеро</title>
+	<link href='../styles.css' rel='stylesheet'>
+</head>
+
+<body>
+	<div><header class='header'>
+		<div class = "title">Озёра</div>
+  		<ul class="menu">
+    			<li><a href="../main.htm">Главная</a></li>
+  		</ul>
+	</header></div>
+
+	<h1 align='center'>Бирюзовое</h1>
+	<p>В Екульском районе Челябинской области, на расстоянии около 45 км от города Челябинск есть озеро Бирюзовое. Озеро относится к карьерному типу и является самым глубоким среди озер такого вида на Южном Урале. Водоем создан на месте карьера, где когда-то добывали уголь. Он имеет форму лепестка, который вытянулся с юга на север.</p>
+	<img src='../images/Biruzovoe.jpg' class='image' width='100%' height='500'>
+	<p>Еще ранее на месте водоема была пещера, возраст которой историки оценили в 400 млн. лет, позже ее своды обрушились и образовался угольный карьер. Свое название озеро получило благодаря цвету воды, заполнившей карьер.</p>
+	<p>Озеро достаточно большое, оно протянулось в длину на 2 км, а его ширина находится в пределах 400 м. Поскольку это бывший карьер, то и средняя глубина озера составляет 47,5 м, а местами доходит до 96 м. Вода в озере слабо минерализована, а на глубине около 6 м и далее круглый год имеет постоянную температуру в пределах 4-5ºС. Берега по всему периметру Бирюзового достаточно крутые.</p>
+	<p>В данный момент озеро представляет из себя рыбный питомник, который передан в частные владения. Здесь с успехом разводят радужную и серебристую форель, окуня, леща, налима, щуку и др. Не смотря на то, что рыбалка здесь платная, она привлекает рыбаков со всех окрестных регионов. Для рыбаков здесь построены специальные мостики, водные беседки и понтоны. Хотя рыбалка разрешена только с берега. Лучшего места для зимней и летней рыбалки на Южном Урале просто не существует.</p>
+	<p>Помимо этого на озере есть зона отдыха, где вблизи прекрасного пляжа построена база отдыха. Здесь можно снять жилье, поставить машину на платную стоянку, взять в аренду рыболовные снасти, оставить своего ребенка на обустроенной детской площадке и покататься на водном мотоцикле или лодке.</p>
+
+	<button vspace='10' id="editBtn" type="button">Изменить страницу</button>
+	<p> Температура: <span id='red21'> нет</span></p>
+	<p> Заметки: <span id='red22'> нет</span></p>
+	<p> Отзывы: <span id='red23'> нет</span></p>
+	
+	<script>
+
+		var editBtn = document.getElementById('editBtn');
+		var editables = document.querySelectorAll('#red21, #red22, #red23')
+	 
+		editBtn.addEventListener('click', function(e) {
+			if (!editables[0].isContentEditable) {
+			editables[0].contentEditable = 'true';
+			editables[1].contentEditable = 'true';
+			editables[2].contentEditable = 'true';
+			editBtn.innerHTML = 'Сохранить изменения';
+			editBtn.style.backgroundColor = '#6F9';
+ 		 } else {
+			editables[0].contentEditable = 'false';
+			editables[1].contentEditable = 'false';
+			editables[2].contentEditable = 'false';
+			editBtn.innerHTML = 'Включить редактирование';
+			editBtn.style.backgroundColor = '#c0c0c0';
+			for (var i = 0; i < editables.length; i++) {
+			localStorage.setItem(editables[i].getAttribute('id'), editables[i].innerHTML);}
+			}
+		});
+	</script>
+
+
+	<script>
+		if (typeof(Storage) !== "undefined") {
+ 
+  		if (localStorage.getItem('red21') !== null) {
+    	editables[0].innerHTML = localStorage.getItem('red21');}
+
+		if (localStorage.getItem('red22') !== null) {
+    	editables[1].innerHTML = localStorage.getItem('red22');}
+
+		if (localStorage.getItem('red23') !== null) {
+    	editables[2].innerHTML = localStorage.getItem('red23');} 
+	}
+	</script>
+</body>
+
+</html>

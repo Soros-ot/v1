@@ -1,0 +1,69 @@
+<!DOCKTYPE html>
+<html>
+
+<head>
+	<title>Озеро</title>
+	<link href='../styles.css' rel='stylesheet'>
+</head>
+
+<body>
+	<div><header class='header'>
+		<div class = "title">Озёра</div>
+  		<ul class="menu">
+    			<li><a href="../main.htm">Главная</a></li>
+  		</ul>
+	</header></div>
+
+	<h1 align='center'>Иртяш</h1>
+	<p>Озеро Иртяш находится в Челябинской области, в Российской Федерации, рядом с городами Озерск и Касли. В озеро впадают небольшие речки, вытекает одна река Теча, это правый приток реки Исеть, также вода в озеро поступает по небольшому каналу с озера Большие Касли.</p>
+	<img src='../images/Irtyash.jpg' class='image' width='100%' height='500'>
+	<p>Озеро Иртяш, в переводе с башкирского значит «каменное место». Водоем имеет тетаническое происхождение, находится на высоте 228 метров над уровнем моря. Размеры озера: площадь – 61, 6 км², ширина – 8 км, длина – 16 км, максимальная глубина 16 м. На берегу озера с восточной стороны на поверхность выходят залежи кристаллических сланцев и мрамора. Дно озера местами песчаное, но в основном илистое.</p>
+	<p>Климат в регионе умеренный континентальный, минимальна температура зимой – 45 °С, а летом около +40 °С. Растительность озера: камыш, тростник, ряска, плавающая ежеголовка, кувшинки, гречиха земноводная, малая злодейка. В озере много раков и рыбы, — это карась, окунь, пелядь, плотва, карп, щука, лещ, сиг.</p>
+	<p>Озеро Иртяш, излюбленное место отдыха для туристов и жителей ближайших городов, здесь красивая природа, чудесный воздух и раздолье для рыбаков. На озере проводятся соревнования по парусному спорту.</p>
+
+	<button vspace='10' id="editBtn" type="button">Изменить страницу</button>
+	<p> Температура: <span id='red71'> нет</span></p>
+	<p> Заметки: <span id='red72'> нет</span></p>
+	<p> Отзывы: <span id='red73'> нет</span></p>
+	
+	<script>
+
+		var editBtn = document.getElementById('editBtn');
+		var editables = document.querySelectorAll('#red71, #red72, #red73')
+	 
+		editBtn.addEventListener('click', function(e) {
+			if (!editables[0].isContentEditable) {
+			editables[0].contentEditable = 'true';
+			editables[1].contentEditable = 'true';
+			editables[2].contentEditable = 'true';
+			editBtn.innerHTML = 'Сохранить изменения';
+			editBtn.style.backgroundColor = '#6F9';
+ 		 } else {
+			editables[0].contentEditable = 'false';
+			editables[1].contentEditable = 'false';
+			editables[2].contentEditable = 'false';
+			editBtn.innerHTML = 'Включить редактирование';
+			editBtn.style.backgroundColor = '#c0c0c0';
+			for (var i = 0; i < editables.length; i++) {
+			localStorage.setItem(editables[i].getAttribute('id'), editables[i].innerHTML);}
+			}
+		});
+	</script>
+
+
+	<script>
+		if (typeof(Storage) !== "undefined") {
+ 
+  		if (localStorage.getItem('red71') !== null) {
+    	editables[0].innerHTML = localStorage.getItem('red71');}
+
+		if (localStorage.getItem('red72') !== null) {
+    	editables[1].innerHTML = localStorage.getItem('red72');}
+
+		if (localStorage.getItem('red73') !== null) {
+    	editables[2].innerHTML = localStorage.getItem('red73');} 
+	}
+	</script>
+</body>
+
+</html>

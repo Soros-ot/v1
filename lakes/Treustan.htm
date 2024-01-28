@@ -1,0 +1,71 @@
+<!DOCKTYPE html>
+<html>
+
+<head>
+	<title>Озеро</title>
+	<link href='../styles.css' rel='stylesheet'>
+</head>
+
+<body>
+	<div><header class='header'>
+		<div class = "title">Озёра</div>
+  		<ul class="menu">
+    			<li><a href="../main.htm">Главная</a></li>
+  		</ul>
+	</header></div>
+
+	<h1 align='center'>Треустан</h1>
+	<p>Озеро Треустан находится в Красноармейском районе Челябинской области в 35 км. на юго-запад от от Челябинска на границе с Курганской областью. У водоема нет населенных пунктов. Природа сохранена почти в девственном виде, хотя озеро является промысловым водоемом, которым пользуется ОАО „Челябрыбхоз”.</p>
+	<img src='../images/Treustan.jpg' class='image' width='100%' height='500'>
+	<p>Озеро имеет вытянутую форму с очень изрезанной береговой линией и несколькими заливами, в которых растет камыш и тростник. Его длина равна 12 км, а ширина достигает 4 км. Берега Треустана пологие, но восточный заболоченный. В северной части водоема есть родники. Общая площадь водоема равна 24 кв. км. Максимальная глубина его вод – 7 м, а в среднем она составляет 3 м. Вода слабо соленая, что не мешает нормальному развитию ихтиофауны. Дно озера песчано-илистое.</p>
+	<p>Вдоль берегов наблюдаются остатки прибрежного леса. Сухостой и коряги придают своеобразный вид месту. Летом вода регулярно цветет из-за гниения остатков затопленного леса.</p>
+	<p>Поддерживание биорессурсов озера в свое время произведено зарыблением, теперь – нерестом, то есть запрещением рыбалки в период нереста рыбы. Сейчас в водоеме обитают много видов рыбы: толстолобик, амур, чебак, карп, карась, окунь, судак, налим и другие.</p>
+	<p></p>
+	<p></p>
+
+	<button vspace='10' id="editBtn" type="button">Изменить страницу</button>
+	<p> Температура: <span id='red161'> нет</span></p>
+	<p> Заметки: <span id='red162'> В 2003 году по не установленной причине окрестные леса в восточном направлении затопила вода, озеро тогда расширилось до 20 км, после чего была построена дамба, которая обезопасила от подтопления близкие села. Поэтому акватория озера (иногда до 200 м.) представляет собой затопленные лесопосадки. </span></p>
+	<p> отзывы: <span id='red163'> нет</span></p>
+	
+	<script>
+
+		var editBtn = document.getElementById('editBtn');
+		var editables = document.querySelectorAll('#red161, #red162, #red163')
+	 
+		editBtn.addEventListener('click', function(e) {
+			if (!editables[0].isContentEditable) {
+			editables[0].contentEditable = 'true';
+			editables[1].contentEditable = 'true';
+			editables[2].contentEditable = 'true';
+			editBtn.innerHTML = 'Сохранить изменения';
+			editBtn.style.backgroundColor = '#6F9';
+ 		 } else {
+			editables[0].contentEditable = 'false';
+			editables[1].contentEditable = 'false';
+			editables[2].contentEditable = 'false';
+			editBtn.innerHTML = 'Включить редактирование';
+			editBtn.style.backgroundColor = '#c0c0c0';
+			for (var i = 0; i < editables.length; i++) {
+			localStorage.setItem(editables[i].getAttribute('id'), editables[i].innerHTML);}
+			}
+		});
+	</script>
+
+
+	<script>
+		if (typeof(Storage) !== "undefined") {
+ 
+  		if (localStorage.getItem('red161') !== null) {
+    	editables[0].innerHTML = localStorage.getItem('red161');}
+
+		if (localStorage.getItem('red162') !== null) {
+    	editables[1].innerHTML = localStorage.getItem('red162');}
+
+		if (localStorage.getItem('red163') !== null) {
+    	editables[2].innerHTML = localStorage.getItem('red163');} 
+	}
+	</script>
+</body>
+
+</html>

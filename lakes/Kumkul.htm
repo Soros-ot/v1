@@ -1,0 +1,70 @@
+<!DOCKTYPE html>
+<html>
+
+<head>
+	<title>Озеро</title>
+	<link href='../styles.css' rel='stylesheet'>
+</head>
+
+<body>
+	<div><header class='header'>
+		<div class = "title">Озёра</div>
+  		<ul class="menu">
+    			<li><a href="../main.htm">Главная</a></li>
+  		</ul>
+	</header></div>
+
+	<h1 align='center'>Кум-Куль</h1>
+	<p>Озеро Кум-Куль, общей площадью 5,9 км², расположено в Аргаяшском районе Челябинской области, на территории Российской Федерации. Озеро Кум-Куль в переводе с башкирского означает «Песчаное озеро», его размеры: ширина– 3 км, длина 2 км, средняя глубина – 7 метров.</p>
+	<img src='../images/Kumkul.jpg' class='image' width='100%' height='500'>
+	<p>Аргаяшский район расположен в северной части Челябинской области и климат здесь умеренный: очень длинные, холодные зимы, и теплое нежаркое лето. Средняя температура зимой – 25-29°C, а летом 20-25°C. Здесь также случаются катаклизмы самая низкая зафиксированная температура -45°C зимой, а летом +40°C.</p>
+	<p>Озеро Кум-Куль пользуется огромной популярностью в отдыхающих из ближайших городов. На его берегу выстроились дома отдыха, садовые товарищества и туристические комплексы, но свободных подъездов к берегу осталось очень мало. Всю территорию «Песчаного озера окружают частные постройки, – челябинцы активно возводят в этом чудесном уголке загородные дома.</p>
+	<p>Чудесное озеро Кум-Куль славится своей естественной красотой: песчаные берега, камышовые заросли, территория окружена березовыми рощами, но с каждым годом их площадь уменьшается. В воде водится многие виды рыбы: щука, окунь, лещ, карась, карп, чебак, плотва. Здесь живет водоплавающая птица и мелкие лесные животные.</p>
+	<p>Отдыхающие могут насладиться плаваньем, рыбалкой, катанием на лодке или катамаране. Любители водных аттракционов могут посетить аквапарк.</p>
+
+	<button vspace='10' id="editBtn" type="button">Изменить страницу</button>
+	<p> Температура: <span id='red181'> нет</span></p>
+	<p> Заметки: <span id='red182'> нет</span></p>
+	<p> Отзывы: <span id='red183'> нет</span></p>
+	
+	<script>
+
+		var editBtn = document.getElementById('editBtn');
+		var editables = document.querySelectorAll('#red181, #red182, #red183')
+	 
+		editBtn.addEventListener('click', function(e) {
+			if (!editables[0].isContentEditable) {
+			editables[0].contentEditable = 'true';
+			editables[1].contentEditable = 'true';
+			editables[2].contentEditable = 'true';
+			editBtn.innerHTML = 'Сохранить изменения';
+			editBtn.style.backgroundColor = '#6F9';
+ 		 } else {
+			editables[0].contentEditable = 'false';
+			editables[1].contentEditable = 'false';
+			editables[2].contentEditable = 'false';
+			editBtn.innerHTML = 'Включить редактирование';
+			editBtn.style.backgroundColor = '#c0c0c0';
+			for (var i = 0; i < editables.length; i++) {
+			localStorage.setItem(editables[i].getAttribute('id'), editables[i].innerHTML);}
+			}
+		});
+	</script>
+
+
+	<script>
+		if (typeof(Storage) !== "undefined") {
+ 
+  		if (localStorage.getItem('red181') !== null) {
+    	editables[0].innerHTML = localStorage.getItem('red181');}
+
+		if (localStorage.getItem('red182') !== null) {
+    	editables[1].innerHTML = localStorage.getItem('red182');}
+
+		if (localStorage.getItem('red183') !== null) {
+    	editables[2].innerHTML = localStorage.getItem('red183');} 
+	}
+	</script>
+</body>
+
+</html>

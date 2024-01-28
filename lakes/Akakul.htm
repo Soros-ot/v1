@@ -1,0 +1,69 @@
+<!DOCKTYPE html>
+<html>
+
+<head>
+	<title>Озеро</title>
+	<link href='../styles.css' rel='stylesheet'>
+</head>
+
+<body>
+	<div><header class='header'>
+		<div class = "title">Озёра</div>
+  		<ul class="menu">
+    			<li><a href="../main.htm">Главная</a></li>
+  		</ul>
+	</header></div>
+	<h1 align='center'>Акакуль</h1>
+	<p>В Аргаяшском районе Челябинской области есть озеро Акакуль. Оно находится в 7 км от города Каштыма, если двигаться в юго-восточном направлении или почти в 3 км на запад от железнодорожной станции Бижеляк. Озеро имеет тектоническое образование и появилось в результате подвижности плит.</p>
+	<img src='../images/Akakul.jpg' class='image' width='100%' height='500'>
+	<p>Свое название озеро получило из башкирского языка и в переводе обозначает проточное или текущее озеро, где «ака» — это течь, вытекать, а «куль» — озеро. И это неслучайно. Так через систему болот и протоков, в восточной части, озеро связано с другим водоемом под названием Улагач, а в западной части из Акакуля вытекает небольшая речка, которая соединят его с Большой Окулей. На южных берегах озера расположены каменные карьеры, здесь есть подсобное хозяйство, а на расстоянии не более 1 км начинается заболоченная местность, которую местные жители называют Акакульское урочище. На северном берегу озера построена водокачка, а северо-запад Акаккуля практически полностью укрыт зарослями камыша и осоки.</p>
+	<p>Общая площадь, которую покрывают воды озера составляет 10 км², хотя треть этой площади приходится на заросли камыша и пр. В длину озеро протянуло почти на 5 км, а ширина его в разных местах колеблется от 2 до 3 км. Средняя глубина озера находится в пределах 5 м, хотя в центре и у южных берегов она может достигать и 11 м. Вода озера чистая и прозрачная, хотя содержит большой комплекс микроэлементов, которые ее минерализируют. По химическому составу эти элементы можно отнести к содовому типу гидрокарбонатного класса, относящиеся к группе магния.</p>
+	<p>Внутри озера, в центральной его части, приблизительно в 200 м от берега, есть ряд небольших безымянных островов. На них растут липы, березы и сосны. Воды озера богаты рыбой и привлекают рыбаков со всей округи, здесь без труда можно поймать плотву, карася, щуку, ерша или леща, водятся раки.</p>
+	<p>На берегах озера есть ряд баз отдыха, которые появились благодаря перестройке бывших пионерских лагерей. Они ежегодно принимают как местных туристов, так и из окрестных областей.</p>
+
+	<button vspace='10' id="editBtn" type="button">Изменить страницу</button>
+	<p> Температура: <span id='red61'> нет</span></p>
+	<p> Заметки: <span id='red62'> нет</span></p>
+	<p> Отзывы: <span id='red63'> нет</span></p>
+	
+	<script>
+
+		var editBtn = document.getElementById('editBtn');
+		var editables = document.querySelectorAll('#red61, #red62, #red63')
+	 
+		editBtn.addEventListener('click', function(e) {
+			if (!editables[0].isContentEditable) {
+			editables[0].contentEditable = 'true';
+			editables[1].contentEditable = 'true';
+			editables[2].contentEditable = 'true';
+			editBtn.innerHTML = 'Save Changes';
+			editBtn.style.backgroundColor = '#6F9';
+ 		 } else {
+			editables[0].contentEditable = 'false';
+			editables[1].contentEditable = 'false';
+			editables[2].contentEditable = 'false';
+			editBtn.innerHTML = 'Включить редактирование';
+			editBtn.style.backgroundColor = '#c0c0c0';
+			for (var i = 0; i < editables.length; i++) {
+			localStorage.setItem(editables[i].getAttribute('id'), editables[i].innerHTML);}
+			}
+		});
+	</script>
+
+
+	<script>
+		if (typeof(Storage) !== "undefined") {
+ 
+  		if (localStorage.getItem('red61') !== null) {
+    	editables[0].innerHTML = localStorage.getItem('red61');}
+
+		if (localStorage.getItem('red62') !== null) {
+    	editables[1].innerHTML = localStorage.getItem('red62');}
+
+		if (localStorage.getItem('red63') !== null) {
+    	editables[2].innerHTML = localStorage.getItem('red63');} 
+	}
+	</script>
+</body>
+
+</html>
